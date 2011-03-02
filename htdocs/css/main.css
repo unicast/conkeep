@@ -1,0 +1,107 @@
+body {
+  background-color:#ffffff;
+  fond-size: 11px;
+  padding: 0;
+  margin: 0;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h1 {
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+h4 {
+  border-bottom: 2px dashed #d7d7d7;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+
+/*
+div.header {
+  border-bottom: 2px dashed #d7d7d7;
+}
+*/
+
+div.config {
+  border: 2px dashed #d7d7d7;
+  /*background-color:#eeeeee;*/
+  
+  width: 321px;
+  padding: 7px 10px 10px 10px;
+  margin-bottom: 10px;
+}
+
+div.config-name {
+  font-size: 20px;
+}
+
+div.rules-table {
+  cellspacing: 10px;
+}
+
+div.rules-table table {
+  border-color: #000000;
+  border-width: 1px;
+  border-style: solid;
+  border-collapse: collapse;
+}
+
+div.rules-table td {
+  border-color: #000000;
+  border-width: 1px;
+  border-style: solid;
+  border-collapse: collapse;
+}
+
+input[type="text"].config-form {
+  width: 300px;
+}
+/*
+input[type="button"].config-form {
+*/
+
+textarea.config-form {
+  width: 300px;
+}
+
+
+a.config {
+  font-color: #ffffff;
+}
+
+
+div.config-description {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div.config-diff p {
+  /*margin: 2px, 2px, 2px, 2px;*/
+  /*padding:2px;*/
+  padding: 0;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+div.toolbar {
+  border: 2px dashed #d7d7d7;
+  background-color:#eeeeee;
+  width: 500px;
+  padding: 7px 10px 10px 10px;
+  margin-bottom: 10px;
+}
+
+.inserted {
+  background: #CFC;
+}
+.deleted {
+  /*font-size: 20px;*/
+  background: #FCC;
+}
+/*
+config-link {
+*/
