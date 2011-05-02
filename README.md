@@ -13,6 +13,10 @@ conkeep is a web-based manager of various configuration files (iptables, Cisco, 
 
 ## Installation
 
-     $ git clone https://github.com/unicast/conkeep.git
-     $ cd conkeep; git submodule update --init
-     $ cd kohana; git submodule update --init
+ $ git clone https://github.com/unicast/conkeep.git
+ $ cd conkeep; git submodule update --init
+ $ chmod 777 application/cache application/logs
+ $ cp application/config/database_example.php application/config/database.php
+ $ mysql -u root -p < sql_schema/database_create.sql
+ $ mysql conkeep -u root -p < sql_schema/conkeep.sql
+ $ cd kohana; git submodule update --init

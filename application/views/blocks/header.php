@@ -5,6 +5,9 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="en-us" />
+    <!--
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" />
+    -->
     <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" />
     <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
     <title><?php if (isset($title)): echo Kohana::config('app_config.site_title') . ' / ' . $title ; endif;?></title>

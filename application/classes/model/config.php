@@ -18,7 +18,8 @@ class Model_Config extends Model
 	public function get_all_configs_params()
 	{
 		$query = DB::select()->from('config')->order_by('order', 'desc');
-		return $query->execute();
+		$config_params = $query->execute();
+		return $config_params;
 	}
 	private function get_config_params_list()
 	{

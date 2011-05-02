@@ -3,7 +3,7 @@
 <?php if (isset($error)): $var['error']=$error; echo View::factory('blocks/error', $var)->render(); endif; ?>
 
 <div id="configs">
-<?php if (isset($configs)): ?>
+<?php if (!empty($configs)): ?>
 <?php foreach($configs as $config):?>
 <div class="config" id="config<?php echo $config['config_id'];?>">
 <div class="config-name">
@@ -16,7 +16,6 @@
 </div>
 </div>
 <?php endforeach;?>
-<?php $config_next_id = max($configs->as_array());?>
 <?php endif; ?>
 <div class="ajax-link"><a href="/config/new">add config</a></div>
 </div>

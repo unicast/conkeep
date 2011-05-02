@@ -6,10 +6,12 @@ class Controller_Config extends Controller {
 	{
 		$config_model = new Model_Config;
 		$configs = $config_model->get_all_configs_params();
-		
 		$view = View::factory('config');
 		$view->title = 'My Configs';
-		$view->configs = $configs;
+		if ($configs)
+		{
+			$view->configs = $configs;
+		}
 		$this->response->body($view);
 	}
 	
@@ -17,8 +19,9 @@ class Controller_Config extends Controller {
 	{
 		if (!($_POST))
 		{
-			if (is_null($config_id))
+			if (empty($config_id))
 			{
+				
 				$view = View::factory('config-edit-settings');
 				$view->title = 'Add new config';
 				$view->config = array('config_id'=>'', 'name'=>'', 'description'=>'');
