@@ -21,7 +21,6 @@ class Controller_Config extends Controller {
 		{
 			if (empty($config_id))
 			{
-				
 				$view = View::factory('config-edit-settings');
 				$view->title = 'Add new config';
 				$view->config = array('config_id'=>'', 'name'=>'', 'description'=>'');
@@ -56,11 +55,8 @@ class Controller_Config extends Controller {
 			$config_model = new Model_Config();
 			$email_model = new Model_Email();
 			$post = $_POST;
-			#echo Kohana::debug($post);
 			$return_id = $config_model->save_config_params($post);
 			$email_model->save_maillist($post);
-			#echo Kohana::debug($return_id);
-			#$this->request->redirect(URL::site(Request::instance()->uri()));
 			$this->request->redirect('/config/edit/'.$return_id);
 		}
 	}
@@ -87,7 +83,7 @@ class Controller_Config extends Controller {
 		$view->title = $config_name . ' / config revision #' . $revision;
 		$view->config_content = $config_content;
 		$view->config_id = $config_id;
-		$this->response->body($view);		
+		$this->response->body($view);
 	}
 	
 	public function action_delete($config_id=null)
@@ -151,9 +147,9 @@ class Controller_Config extends Controller {
 				}
 				else
 				{
-					$this->request->status = 404;
-					$this->request->headers['HTTP/1.1'] = '404';
-					$this->request->response = "New config is fully identical to previous.\n";
+					$this->response->status(404);
+					$this->response->headers('HTTP/1.1', '404');
+					$this->response->body("New config is fully identical to previous.\n");
 				}
 			}
 			else {
@@ -179,13 +175,13 @@ class Controller_Config extends Controller {
 			{
 				$config_content_model->update_rules($config_id, $new_config_array);
 				$this->request->redirect('/config/show/' . $config_id);
-				//$this->request->redirect($post['return']);
 			}
 			else
 			{
-				$this->request->status = 404;
-				$this->request->headers['HTTP/1.1'] = '404';
-				$this->request->response = "New config is fully identical to previous.\n";
+				$this->request->redirect('/config/show/' . $config_id);
+				//$this->response->status(404);
+				//$this->response->headers('HTTP/1.1', '404');
+				//$this->response->body("New config is fully identical to previous.\n");
 			}
 		}
 	}
@@ -199,11 +195,12 @@ class Controller_Config extends Controller {
 	private function add_comments_to_new_config($old, $new) {
 		$maxlen = 0;
 		$new_config_with_comments_array = $new;
-		foreach ($old as $oindex => $ovalue ) {
-			foreach ($new as $nindex => $nvalue ) {
+		foreach ($new as $nindex => $nvalue ) {
+			foreach ($old as $oindex => $ovalue ) {
 				if (($ovalue['line'] == $nvalue['line']) and (isset($ovalue['comment']))) {
 					$new_config_with_comments_array[$nindex]['comment'] = $ovalue['comment'];
-					break;
+					unset($old[$oindex]);  // prevents adding comment
+					break;                 // to the equal strings
 				}
 			}
 		}

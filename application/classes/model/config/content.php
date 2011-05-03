@@ -42,7 +42,7 @@ class Model_Config_Content extends Model
 		$current_revision = $this->get_current_config_revision($config_id);
 		$config_content_array_serialized = gzcompress(serialize($config_content_array));
 		$query = DB::update('config_content')
-			->set(array('config_content'=>$config_content_array_serialized))
+			->set(array('config_content'=>$config_content_array_serialized, 'commented'=>true))
 			->where('config_id', '=', $config_id)
 			->where('revision', '=', $current_revision);
 		$query->execute();
