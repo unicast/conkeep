@@ -25,5 +25,6 @@ conkeep is a web-based manager of various configuration files (iptables, Cisco, 
 
 You can manage Your configs via web-interface (e.g. http://conkeep.expample.com)
 For auto-update configs You can use script conkeep/scripts/conkeep_update.sh, e.g.:
-    iptables-save | sed "/^[:#]\.*/d" | /var/www/conkeep/scripts/conkeep_update.sh http://conkeep.example.com/config/update/3 -
+
+    $ iptables-save | sed "/^[:#]\.*/d" | /var/www/conkeep/scripts/conkeep_update.sh http://conkeep.example.com/config/update/3 -
 
